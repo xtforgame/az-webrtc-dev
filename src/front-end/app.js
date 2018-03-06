@@ -15,6 +15,7 @@ import { getTranslationMessages } from './i18n';
 import App from '~/containers/App';
 import './main.css';
 
+
 injectTapEventPlugin();
 
 // Create a history of your choosing (we're using a browser history in this case)

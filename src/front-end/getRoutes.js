@@ -16,6 +16,8 @@ import testCase01 from '~/test-cases/test-case-01';
 import AsyncPage from '~/containers/AsyncPage';
 import Login from '~/containers/Login';
 import InjectorTest from '~/containers/InjectorTest';
+import WebsocketTest from '~/containers/WebsocketTest';
+import WebsocketTestBasic from '~/containers/WebsocketTest/WebsocketTestBasic';
 
 import getListHierarchy from '~/containers/MainFrame/getListHierarchy';
 
@@ -135,6 +137,26 @@ const globalRouteConfig = {
           name: 'async-in-main',
           path: '/async-in-main2',
           component: AsyncPage,
+        },
+        {
+          name: 'websocket-test',
+          path: '/websocket-test',
+          component: WebsocketTest, 
+          navbar: true,
+          routeViews: [{
+            routes: [{
+              name: 'websocket-test-index',
+              path: '/websocket-test',
+              component: () => <Redirect to={{ pathname: '/websocket-test/basic' }}/>,
+              exact: true,
+            },
+            {
+              name: 'websocket-test-basic',
+              path: '/websocket-test/basic',
+              component: WebsocketTestBasic,
+              navbar: true,
+            }],
+          }],
         }],
       }],
     }],

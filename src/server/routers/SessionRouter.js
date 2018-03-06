@@ -7,7 +7,7 @@ export default class SessionRouter extends RouterBase {
       const body = ctx.request.body || {};
       const { auth_type, password, username } = body;
       const session = fakeUserManager.authenticate(auth_type, username, password);
-      return ctx.body = session || { error: 'Wrong credential' };
+      return ctx.rcResponse.send(session || { error: 'Wrong credential' });
     });
   }
 }
