@@ -2,6 +2,7 @@
 
 import React, { Component } from 'react';
 import JssProvider from 'react-jss/lib/JssProvider';
+import LanguageProvider from '~/containers/LanguageProvider';
 import { withStyles, MuiThemeProvider } from 'material-ui/styles';
 import createContext from '../styles/createContext';
 
@@ -24,7 +25,9 @@ export default function withRoot(BaseComponent) {
       return (
         <JssProvider registry={context.sheetsRegistry} jss={context.jss}>
           <MuiThemeProvider theme={context.theme} sheetsManager={context.sheetsManager}>
-            <BaseComponent {...this.props} />
+            <LanguageProvider messages={this.props.messages}>
+              <BaseComponent {...this.props} />
+            </LanguageProvider>
           </MuiThemeProvider>
         </JssProvider>
       );

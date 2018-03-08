@@ -10,7 +10,6 @@ import getRoutes from './getRoutes';
 import fontLoader from './fontLoader';
 import { loadState } from './localStorage';
 
-import LanguageProvider from '~/containers/LanguageProvider';
 import { getTranslationMessages } from './i18n';
 import App from '~/containers/App';
 import './main.css';
@@ -39,7 +38,7 @@ class AppWrapper extends React.Component {
     fontLoader().min
     .then(() => {
       this.setState({
-        app: <App history={history} routes={getRoutes()} />,
+        app: <App history={history} routes={getRoutes()} messages={this.props.messages} />,
       });
     });
   }
@@ -47,9 +46,7 @@ class AppWrapper extends React.Component {
   render(){
     return (
       <Provider store={store}>
-        <LanguageProvider messages={this.props.messages}>
-          {this.state.app}
-        </LanguageProvider>
+        {this.state.app}
       </Provider>
     );
   }
