@@ -16,7 +16,7 @@ export default class TestContent extends React.Component {
         <Button
           dense="true"
           color="primary"
-          onTouchTap={this.run}
+          onClick={this.run}
         >
           Run
         </Button>

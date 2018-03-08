@@ -27,14 +27,14 @@ class WebsocketTestBasic extends React.Component {
         <Button
           dense="true"
           color="primary"
-          onTouchTap={this.read}
+          onClick={this.read}
         >
           Read Test Api
         </Button>
         <Button
           dense="true"
           color="primary"
-          onTouchTap={this.cancel}
+          onClick={this.cancel}
         >
           Cancel
         </Button>

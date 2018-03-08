@@ -56,12 +56,9 @@ class MainFrame extends React.Component {
   }
 
   toggleDrawer = (open) => () => {
-    setTimeout(() => {
-      // [TODO] Work-around delay for mobile device
-      this.setState({
-        drawerOpened: open,
-      });
-    }, 10);
+    this.setState({
+      drawerOpened: open,
+    });
   };
 
   closeDrawer = () => {
@@ -111,7 +108,7 @@ class MainFrame extends React.Component {
           <div
             tabIndex={0}
             role="button"
-            // onTouchTap={this.toggleDrawer(false)}
+            // onClick={this.toggleDrawer(false)}
             // onKeyDown={this.toggleDrawer(false)}
           >
             {sideList}

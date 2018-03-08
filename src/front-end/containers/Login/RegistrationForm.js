@@ -26,7 +26,7 @@ import SuccessButton from '~/components/Buttons/SuccessButton';
 const LinkInternal = ({text, url, classes}) => (
   <a
     className={classes.link}
-    onTouchTap={event => {
+    onClick={event => {
       event.stopPropagation();
       event.preventDefault();
     }}
@@ -118,7 +118,7 @@ class LoginForm extends React.Component {
                 event.stopPropagation();
                 event.preventDefault();
               }}
-              onTouchTap={event => {
+              onClick={event => {
                 event.stopPropagation();
                 event.preventDefault();
               }}
@@ -170,7 +170,7 @@ class LoginForm extends React.Component {
             color="primary"
             disabled={comfirmUserAgreement && !this.state.agreed}
             className={classes.loginBtn}
-            onTouchTap={this.handleSubmit}
+            onClick={this.handleSubmit}
           >
             {createAccountText}
           </SuccessButton>

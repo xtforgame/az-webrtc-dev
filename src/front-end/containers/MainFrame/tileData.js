@@ -13,20 +13,20 @@ import DeleteIcon from 'material-ui-icons/Delete';
 import ReportIcon from 'material-ui-icons/Report';
 import Icon from 'material-ui/Icon';
 
-export const getMailFolderList = (closeDrawer, onTouchTap01, onTouchTap02, onTouchTap03) => {
+export const getMailFolderList = (closeDrawer, onClick01, onClick02, onClick03) => {
   let closeWrapper = (func) => (e) => {
     closeDrawer && closeDrawer();
     func && func(e);
   }
   return (
     <List subheader={<ListSubheader>Mail Folder List</ListSubheader>}>
-      <ListItem onTouchTap={closeWrapper(onTouchTap01)} button>
+      <ListItem onClick={closeWrapper(onClick01)} button>
         <ListItemIcon>
           <InboxIcon />
         </ListItemIcon>
         <ListItemText primary="Inbox" />
       </ListItem>
-      <ListItem onTouchTap={closeWrapper(onTouchTap02)} button>
+      <ListItem onClick={closeWrapper(onClick02)} button>
         <ListItemIcon>
           <Icon className="fa fa-calculator" style={{
             fontSize: 20,
@@ -37,13 +37,13 @@ export const getMailFolderList = (closeDrawer, onTouchTap01, onTouchTap02, onTou
         </ListItemIcon>
         <ListItemText primary="Starred" />
       </ListItem>
-      <ListItem onTouchTap={closeWrapper(onTouchTap03)} button>
+      <ListItem onClick={closeWrapper(onClick03)} button>
         <ListItemIcon>
           <SendIcon />
         </ListItemIcon>
         <ListItemText primary="Send mail" />
       </ListItem>
-      <ListItem onTouchTap={closeWrapper()} button>
+      <ListItem onClick={closeWrapper()} button>
         <ListItemIcon>
           <DraftsIcon />
         </ListItemIcon>

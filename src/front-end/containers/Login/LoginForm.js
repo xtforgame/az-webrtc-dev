@@ -124,7 +124,7 @@ class LoginForm extends React.Component {
             fullWidth={true}
             color="primary"
             className={classes.loginBtn}
-            onTouchTap={this.handleSubmit}>
+            onClick={this.handleSubmit}>
             {loginText}
           </Button>
           <FormSpace variant="content1" />
@@ -133,7 +133,7 @@ class LoginForm extends React.Component {
             color="secondary"
             align="right"
             className={classes.link}
-            onTouchTap={handleForgotPassword}
+            onClick={handleForgotPassword}
           >
             {forgotPasswordText}
           </Typography>
@@ -141,7 +141,7 @@ class LoginForm extends React.Component {
         </FormContent>
         <Divider />
         <FormContent>
-          <Button fullWidth={true} className={classes.loginBtn} onTouchTap={handleCreateAccount}>
+          <Button fullWidth={true} className={classes.loginBtn} onClick={handleCreateAccount}>
             {createAccountText}
           </Button>
         </FormContent>

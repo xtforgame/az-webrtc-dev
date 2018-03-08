@@ -56,7 +56,7 @@ class RouteList extends React.Component {
       array.map(item => {
         if(item.children){
           children.push(
-            <ListItem key={item.name} className={classes[`nested${level}`]} button onTouchTap={this.handleClick(item.name)}>
+            <ListItem key={item.name} className={classes[`nested${level}`]} button onClick={this.handleClick(item.name)}>
               <ListItemIcon>
                 <InboxIcon />
               </ListItemIcon>
@@ -73,7 +73,7 @@ class RouteList extends React.Component {
           );
         }else{
           children.push(
-            <ListItem key={item.name} className={classes[`nested${level}`]} button onTouchTap={navigateToFunc(item.path)}>
+            <ListItem key={item.name} className={classes[`nested${level}`]} button onClick={navigateToFunc(item.path)}>
               <ListItemIcon>
                 <StarBorder />
               </ListItemIcon>

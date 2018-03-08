@@ -46,14 +46,14 @@ class MainAppBar extends React.Component {
       <div className={classes.root}>
         <AppBar position="fixed">
           <Toolbar>
-            <IconButton color="inherit" className={classes.menuButton} onTouchTap={onToggleMenu} aria-label="Menu">
+            <IconButton color="inherit" className={classes.menuButton} onClick={onToggleMenu} aria-label="Menu">
               <MenuIcon />
             </IconButton>
             <Typography variant="title" color="inherit" className={classes.flex}>
               <FormattedMessage {...messages.appTitle} />
             </Typography>
             <LocaleDropdown />
-            <Button color="inherit" onTouchTap={clearSession}>
+            <Button color="inherit" onClick={clearSession}>
               <FormattedMessage {...messages.logout} />
             </Button>
           </Toolbar>

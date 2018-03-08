@@ -54,7 +54,7 @@ class LocaleDropdown extends React.Component {
         <MenuItem
           key={_locale}
           selected={localeIndex[locale] === i}
-          onTouchTap={event => this.handleMenuItemClick(event, i, _locale)}
+          onClick={event => this.handleMenuItemClick(event, i, _locale)}
         >
           {appLocaleNames[i]}
         </MenuItem>
@@ -71,7 +71,7 @@ class LocaleDropdown extends React.Component {
           aria-owns={this.state.open ? 'simple-menu' : null}
           aria-haspopup="true"
           {...props}
-          onTouchTap={this.handleClick}
+          onClick={this.handleClick}
         >
           {appLocaleNames[localeIndex[locale]]}
         </Button>

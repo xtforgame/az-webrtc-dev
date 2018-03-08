@@ -147,7 +147,7 @@ class Login extends React.Component {
         <Paper className={classes.paper} elevation={4}>
           <AppBar position="static">
             <Toolbar className={classes.toolBar}>
-              {!!this.state.tabIndex && <IconButton className={classes.menuButton} color="inherit" aria-label="Back" onTouchTap={() => { this.swipeTo(0); }}>
+              {!!this.state.tabIndex && <IconButton className={classes.menuButton} color="inherit" aria-label="Back" onClick={() => { this.swipeTo(0); }}>
                 <ArrowBack/>
               </IconButton>}
               <Typography variant="title" color="inherit" className={classes.flex}>

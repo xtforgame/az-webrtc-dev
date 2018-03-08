@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 
 import createHistory from 'history/createHashHistory';
-import injectTapEventPlugin from 'react-tap-event-plugin'; // new: temporary tap-event codes
 
 import configureStore from './configureStore';
 import getRoutes from './getRoutes';
@@ -13,9 +12,6 @@ import { loadState } from './localStorage';
 import { getTranslationMessages } from './i18n';
 import App from '~/containers/App';
 import './main.css';
-
-
-injectTapEventPlugin();
 
 // Create a history of your choosing (we're using a browser history in this case)
 const history = createHistory();
