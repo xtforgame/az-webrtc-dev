@@ -20,7 +20,7 @@ export default class WsApp extends ServiceBase {
     this.app.use((ctx, next) => {
       return next().catch((e) => {
         console.log(`Error on (${ctx.path}) :`, e);
-        return onError(ctx);
+        // return onError(ctx);
       });
     });
     this.app
