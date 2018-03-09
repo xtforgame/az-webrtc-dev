@@ -9,7 +9,7 @@ export default class UserManager extends ServiceBase {
   constructor() {
     super();
     this.userSessionManager = new GenericUserSessionManager({
-      verifyToken: () => ({userid: 1}),
+      verifyToken: (sessionId) => ({userid: sessionId}),
     });
   }
 

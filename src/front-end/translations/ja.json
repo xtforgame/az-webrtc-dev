@@ -1,8 +1,0 @@
-{
-  "app.containers.App.greet.message": "{user}さん、こんにちは。",
-  "app.containers.App.app.title": "<タイトル>",
-  "app.containers.App.login": "ログイン",
-  "app.containers.App.logout": "ログアウト",
-  "app.containers.App.username": "ユーザー名",
-  "app.containers.App.password": "パスワード"
-}

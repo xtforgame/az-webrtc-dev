@@ -7,11 +7,6 @@ export default class PreprocessRouter extends RouterBase {
       this.userSessionManager.addPeer(ctx.rcPeer);
     });
 
-    router.post('/test-api', (ctx, next) => ctx.body.json().then((data) => {
-      return ctx.rcResponse.send({
-        echo: data,
-      });
-    }));
 
     router.post('/sessions', (ctx, next) => ctx.body.json().then((data) => {
       return this.userSessionManager.loginSession(ctx.rcPeer, data.token)

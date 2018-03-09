@@ -1,8 +1,0 @@
-{
-  "app.containers.App.greet.message": "早上好，{user}。",
-  "app.containers.App.app.title": "<标题>",
-  "app.containers.App.login": "登录",
-  "app.containers.App.logout": "登出",
-  "app.containers.App.username": "用户名",
-  "app.containers.App.password": "密码"
-}

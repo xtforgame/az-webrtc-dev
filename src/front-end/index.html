@@ -1,17 +1,24 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Az React Dev</title>
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
   </head>
+
   <body>
-    <script src="testlibs/mocha.js"></script>
-    <script src="testlibs/chai.js"></script>
-    <script src="testlibs/sinon.js"></script>
-    <div id="page_main" class="wrapper" />
-    <!-- The following scripts will be generared by webpack -->
+    <video id="localVideo" autoplay muted style="width:40%;"></video>
+    <video id="remoteVideo" autoplay style="width:40%;"></video><br />
+    <select id="user-select" size="9" style="width: 200px;"></select>
+    <input type="button" id="accept" value="Accept" style="display: none;"></input>
+    <input type="button" id="decline" value="Decline" style="display: none;"></input>
+    <br />
+    <input type="button" id="get-user-list" value="Get User List"></input>
+    <br /><br />
+    <input type="button" id="call" value="Call"></input>
+    <input type="button" id="cancel" value="Cancel" style="display: none;"></input>
+    <input type="button" id="close" value="Hang up" style="display: none;"></input>
+    <div>
+      <pre id="state">
+      </pre>
+    </div>
   </body>
 </html>

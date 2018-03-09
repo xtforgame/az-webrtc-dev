@@ -1,8 +1,0 @@
-{
-  "app.containers.App.greet.message": "Hi, {user}.",
-  "app.containers.App.app.title": "<Title>",
-  "app.containers.App.login": "Login",
-  "app.containers.App.logout": "Logout",
-  "app.containers.App.username": "Username",
-  "app.containers.App.password": "Password"
-}
