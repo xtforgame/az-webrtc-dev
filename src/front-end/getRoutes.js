@@ -12,14 +12,17 @@ import Test from '~/containers/Test';
 import TestContent from '~/containers/Test/TestContent';
 import testCase00 from '~/test-cases/test-case-00';
 import testCase01 from '~/test-cases/test-case-01';
+import testCase02 from '~/test-cases/test-case-02';
 
 import AsyncPage from '~/containers/AsyncPage';
 import Login from '~/containers/Login';
 import InjectorTest from '~/containers/InjectorTest';
+import WebsocketTest from '~/containers/WebsocketTest';
+import WebsocketTestBasic from '~/containers/WebsocketTest/WebsocketTestBasic';
 
 import getListHierarchy from '~/containers/MainFrame/getListHierarchy';
 
-let testCases = [testCase00, testCase01];
+let testCases = [testCase00, testCase01, testCase02];
 let getTestCaseRoutes = () => testCases.map((testCase, i) => {
   i = ('0'.repeat(3) + i).slice(-3);
   return {
@@ -135,6 +138,26 @@ const globalRouteConfig = {
           name: 'async-in-main',
           path: '/async-in-main2',
           component: AsyncPage,
+        },
+        {
+          name: 'websocket-test',
+          path: '/websocket-test',
+          component: WebsocketTest, 
+          navbar: true,
+          routeViews: [{
+            routes: [{
+              name: 'websocket-test-index',
+              path: '/websocket-test',
+              component: () => <Redirect to={{ pathname: '/websocket-test/basic' }}/>,
+              exact: true,
+            },
+            {
+              name: 'websocket-test-basic',
+              path: '/websocket-test/basic',
+              component: WebsocketTestBasic,
+              navbar: true,
+            }],
+          }],
         }],
       }],
     }],

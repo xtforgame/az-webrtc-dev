@@ -1,5 +1,7 @@
 import { getHeaders } from '~/utils/HeaderManager';
 import ModelMap from '~/utils/rest-model/ModelMap';
+import wsProtocol from '~/utils/wsProtocol1';
+import { CancelToken } from 'ricio/front-end';
 
 const responseMiddleware = (response, info) => {
   if(response.status === 200 && response.data.error){
@@ -31,6 +33,22 @@ const modelsDefine = {
       },
       selectors: {
         baseSelector: state => state.get('global').sessions,
+      },
+      reducers: {
+        getId: action => 'me', // action.data.user_id,
+      },
+    },
+  },
+  wsSessions: {
+    url: '/sessions',
+    names: { singular: 'wsSession', plural: 'wsSessions' },
+    extensionConfigs: {
+      wsEpics: {
+        wsProtocol,
+        CancelToken,
+      },
+      selectors: {
+        baseSelector: state => state.get('global').wsSessions,
       },
       reducers: {
         getId: action => 'me', // action.data.user_id,

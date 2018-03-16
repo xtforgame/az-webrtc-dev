@@ -10,6 +10,7 @@ import getWebpackService from './webpack-service';
 import http from 'http';
 import path from 'path';
 import appRootPath from 'app-root-path';
+import { createKoaMiddleware } from 'ricio/node'
 
 const appRoot = appRootPath.resolve('./');
 
@@ -20,9 +21,9 @@ let methods = http.METHODS.map(function lowerCaseMethod (method) {
 export default class HttpApp extends ServiceBase {
   static $name = 'httpApp';
   static $type = 'service';
-  static $inject = ['envCfg'];
+  static $inject = ['envCfg', 'userManager'];
 
-  constructor(envCfg){
+  constructor(envCfg, userManager){
     super();
     this.app = new Koa();
     // prevent any error to be sent to user
@@ -43,6 +44,7 @@ export default class HttpApp extends ServiceBase {
     this.app.use(bodyParser());
     /*let credentials = */this.credentials = envCfg.credentials;
 
+    this.app.use(createKoaMiddleware(userManager));
     // ========================================
     if (process.env.NODE_ENV === 'development') {
       const { middlewares } = getWebpackService();

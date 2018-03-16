@@ -28,7 +28,7 @@ export default class UserRouter extends RouterBase {
         ctx.throw(404);
       }
 
-      return ctx.body = exposedUser;
+      return ctx.rcResponse.send(exposedUser);
     });
 
     router.post('/api/users', (ctx) => {
@@ -52,11 +52,11 @@ export default class UserRouter extends RouterBase {
       if(!user){
         ctx.throw(400, 'Account id has already been taken.', { expose: true });
       }
-      return ctx.body = {
+      return ctx.rcResponse.send({
         id: user.id,
         name,
         privilege,
-      };
+      });
     });
   }
 }

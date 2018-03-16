@@ -9,6 +9,11 @@ const {
 } = modelMap.epics;
 
 const {
+  createWsSessionEpic,
+  readWsSessionCollEpic,
+} = modelMap.wsEpics;
+
+const {
   SESSION_CREATE_SUCCESS,
   SESSION_CLEAR_START,
   USER_CREATE_START,
@@ -55,6 +60,8 @@ export default [
   autologinAfterRegistration,
   createSessionEpic,
   readSessionCollEpic,
+  createWsSessionEpic,
+  readWsSessionCollEpic,
   readUserEpic,
   createUserEpic,
 ];
