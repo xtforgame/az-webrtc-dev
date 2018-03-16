@@ -4,6 +4,7 @@ import ActionTypesCreator from './extension-creators/ActionTypesCreator';
 import ActionsCreator from './extension-creators/ActionsCreator';
 import ReducerCreator from './extension-creators/ReducerCreator';
 import EpicCreator from './extension-creators/EpicCreator';
+import WsEpicCreator from './extension-creators/WsEpicCreator';
 import SelectorsCreator from './extension-creators/SelectorsCreator';
 
 export default class ModelMap
@@ -15,6 +16,7 @@ export default class ModelMap
       ActionsCreator,
       ReducerCreator,
       EpicCreator,
+      WsEpicCreator,
       SelectorsCreator,
     ];
 
