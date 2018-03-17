@@ -36,7 +36,7 @@ class FakeUserManager {
     this.register('admin', 'admin', 'Admin', 'admin');
     
     for (let index = 1; index <= 10; index++) {
-      this.register(`testUser${index}`, `testUser${index}`, `Test User ${index}`, 'user');
+      this.register(`t${index}`, `t${index}`, `Test User ${index}`, 'user');
     }
   }
 
