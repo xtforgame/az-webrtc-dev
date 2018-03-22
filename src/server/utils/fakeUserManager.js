@@ -6,7 +6,7 @@ class FakeUserManager {
     this.usernames = {};
     this.userIdMap = {};
 
-    this.jwtSessionHelper = new JwtSessionHelper('secret', {
+    this.jwtSessionHelper = new JwtSessionHelper('55457', {
       defaults: {
         algorithm: 'HS256',
       },
@@ -33,10 +33,12 @@ class FakeUserManager {
     });
 
     this.register('admin', 'admin', 'Admin', 'admin');
-    
+    this.register('熊.web', '熊.web', '熊.web', 'user');
+    this.register('熊.mobile', '熊.mobile', '熊.mobile', 'user');
     for (let index = 1; index <= 10; index++) {
       this.register(`t${index}`, `t${index}`, `Test User ${index}`, 'user');
     }
+    this.register('tracy', 'tracy', 'Tracy', 'user');
   }
 
   register(username, password, name, privilege){

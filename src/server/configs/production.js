@@ -1,13 +1,14 @@
 import path from 'path';
 
-let credentialFiles = {
-  basePath: path.join(__dirname, '..', 'ssl/production/xxxxxx'),
-  key: 'privatekey.pem',
-  cert: 'certificate.pem',
+const credentialFiles = {
+  basePath: path.join(__dirname, '..', 'ssl/production/dimension8ai.com'),
+  key: 'key.pem',
+  cert: 'fullchain.pem',
+  ca: 'chain.pem',
 };
 
-let httpPort = 80;
-let httpsPort = 443;
+let httpPort = 10034;
+let httpsPort = 10035;
 
 export {
   credentialFiles,

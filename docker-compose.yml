@@ -1,11 +1,11 @@
 version: '3'
 services:
   webserver:
-    image: seed-proj/webserver
+    image: rick/d8-webrtc-v2:0.1.0
     build:
       context: .
 
-    container_name: webserver-${CONTAINER_POSTFIX:-default}
+    container_name: d8-webrtc-v2-server
 
     volumes:
       - ".:/usr/volumes/src/"
@@ -13,5 +13,12 @@ services:
     command: bash docker-cmd.sh
 
     ports:
-      - "443:443"
-      - "80:80"
+      - "10037:10037"
+      - "10036:10036"
+      - "10035:10035"
+      - "10034:10034"
+
+networks:
+  default:
+    external:
+      name: app_net

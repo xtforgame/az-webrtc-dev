@@ -10,8 +10,8 @@ please DO NOT put any sensitive information here.
 */
 
 let runningMode = 'Production';
-let wsPort = 3310;
-let wssPort = 3320;
+let wsPort = 10036;
+let wssPort = 10037;
 
 export {
   runningMode,
