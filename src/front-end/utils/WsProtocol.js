@@ -112,7 +112,7 @@ export default class WsProtocol extends Base {
     //   this.wsPeer.unlistenNative('close', cb);
     // }
     // this.wsPeer.listenNative('close', cb);
-    
+
     return this.open()
     .then(() => this.send(request));
   }

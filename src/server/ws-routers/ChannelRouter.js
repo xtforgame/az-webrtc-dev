@@ -32,7 +32,6 @@ export default class ChannelRouter extends RouterBase {
     }
     // this.userSessionManager.getPeerChannelList(user);
     channels.forEach((channelId) => {
-      console.log('channelId :', channelId);
       ctx.rcPeer.channelBroadcast(channelId, {
         path: `/chs/${channelId}/user-left`,
         body: {
@@ -47,6 +46,11 @@ export default class ChannelRouter extends RouterBase {
     });
 
     user.leaveChannel(channels);
+    channels.forEach((channelId) => {
+      if (channelId !== 'lobby') {
+        this.userSessionManager.channelRemoveAllPeers(channelId);
+      }
+    });
   }
 
   setupRoutes({ router }) {

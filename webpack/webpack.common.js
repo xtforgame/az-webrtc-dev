@@ -43,6 +43,11 @@ module.exports = function(env) {
       filename: baseFolderName + '/js/[name].js',
       publicPath: '/',
     },
+    externals: {
+      'react-native': '{}',
+      'EventEmitter': '{}',
+      'react-native-webrtc': 'module.exports',
+    },
     resolve: {
       // extensions: ['', '.jsx', '.js', '.scss', '.css', '.json', '.md'],
       alias: webpackResolveAlias,
