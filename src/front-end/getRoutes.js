@@ -32,6 +32,10 @@ import Recovery from '~/containers/Recovery';
 import WebsocketTest from '~/containers/WebsocketTest';
 import WebsocketTestBasic from '~/containers/WebsocketTest/WebsocketTestBasic';
 
+import WebRTCTest from '~/containers/WebRTCTest';
+import WebRTCTestBasic from '~/containers/WebRTCTest/WebRTCTestBasic';
+import WebRTCTestRoom from '~/containers/WebRTCTest/WebRTCTestRoom';
+
 import getListHierarchy from '~/containers/MainFrame/getListHierarchy';
 
 const testCases = [testCase00, testCase01, testCase02];
@@ -58,7 +62,7 @@ const globalRouteConfig = {
     routes: [{
       name: 'redirect',
       path: '/',
-      component: () => <Redirect to={{ pathname: '/home' }} />,
+      component: () => <Redirect to={{ pathname: '/webrtc-test' }} />,
       exact: true,
     },
     {
@@ -235,6 +239,32 @@ const globalRouteConfig = {
               name: 'websocket-test-basic',
               path: '/websocket-test/basic',
               component: WebsocketTestBasic,
+              navbar: true,
+            }],
+          }],
+        },
+        {
+          name: 'webrtc-test',
+          path: '/webrtc-test',
+          component: WebRTCTest,
+          navbar: true,
+          routeViews: [{
+            routes: [{
+              name: 'webrtc-test-index',
+              path: '/webrtc-test',
+              component: () => <Redirect to={{ pathname: '/webrtc-test/room' }} />,
+              exact: true,
+            },
+            {
+              name: 'webrtc-test-basic',
+              path: '/webrtc-test/basic',
+              component: WebRTCTestBasic,
+              navbar: true,
+            },
+            {
+              name: 'webrtc-test-room',
+              path: '/webrtc-test/room',
+              component: WebRTCTestRoom,
               navbar: true,
             }],
           }],

@@ -27,18 +27,17 @@ export default class PreprocessRouter extends RouterBase {
       this.userSessionManager.addPeer(ctx.rcPeer);
     });
 
-    router.post('/test-api', (ctx, next) => ctx.body.json().then(data => ctx.rcResponse.send({
-      echo: data,
-    })));
-
     router.post('/sessions', (ctx, next) => ctx.body.json().then((data) => {
-      let p = null;
-      if (data.token) {
-        p = this.loginWithToken(ctx, data.token);
-      } else {
-        p = this.loginWithPassword(ctx, data);
+      if (!data.token) {
+        return ctx.rcResponse.throw(400);
       }
-      return p
+      if (ctx.rcPeer.sessionId) {
+        // already logged in
+        return ctx.rcResponse.send({
+          wsSession: ctx.rcPeer.session,
+        });
+      }
+      return this.loginWithToken(ctx, data.token)
       .then((sessions) => {
         if (!sessions) {
           return ctx.rcResponse.send({ error: 'Wrong credential' });
@@ -52,9 +51,9 @@ export default class PreprocessRouter extends RouterBase {
           return ctx.rcResponse.send({ error: 'Wrong credential' });
         }
 
-        if (wsSession.name) {
+        if (wsSession.user_name) {
           const user = ctx.rcPeer.getUser();
-          user.data.name = wsSession.name;
+          user.data.name = wsSession.user_name;
         }
 
         return ctx.rcResponse.send(sessions);

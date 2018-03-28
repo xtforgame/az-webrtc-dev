@@ -3,6 +3,7 @@ import ServiceBase from '../ServiceBase';
 
 import PreprocessRouter from '~/ws-routers/PreprocessRouter';
 import ChannelRouter from '~/ws-routers/ChannelRouter';
+import MainRouter from '~/ws-routers/MainRouter';
 
 export default class WsRouterManager extends ServiceBase {
   static $name = 'wsRouterManager';
@@ -14,7 +15,7 @@ export default class WsRouterManager extends ServiceBase {
   constructor(wsApp, userManager) {
     super();
 
-    this.routers = [PreprocessRouter, ChannelRouter]
+    this.routers = [PreprocessRouter, ChannelRouter, MainRouter]
       .map(Router => new Router({
         userSessionManager: userManager.userSessionManager,
       }).setupRoutes(wsApp.appConfig));
