@@ -7,13 +7,15 @@ import UserRouter from '~/routers/UserRouter';
 export default class RouterManager extends ServiceBase {
   static $name = 'routerManager';
   static $type = 'service';
-  static $inject = ['httpApp'];
+  static $inject = ['httpApp', 'userManager'];
 
-  constructor(httpApp){
+  constructor(httpApp, userManager){
     super();
 
     let routers = [MainRouter, SessionRouter, UserRouter]
-    .map(Router => new Router({}).setupRoutes(httpApp.appConfig));
+    .map(Router => new Router({
+      userSessionManager: userManager.userSessionManager,
+    }).setupRoutes(httpApp.appConfig));
   }
 
   onStart(){
