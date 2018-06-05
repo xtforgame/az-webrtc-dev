@@ -3,9 +3,12 @@ import Azldi from 'azldi';
 import { httpPort, httpsPort } from 'config';
 // ============================================
 import EnvCfg from '~/services/env-cfg';
+import UserManager from '~/services/user-manager';
 import HttpApp from '~/services/http-app';
 import RouterManager from '~/services/router-manager';
 import Mailer from '~/services/mailer';
+import WsApp from '~/services/ws-app';
+import WsRouterManager from '~/services/ws-router-manager';
 import {
   runningMode,
 } from 'common/core/config';
@@ -15,9 +18,12 @@ class Server {
     this.ioc = new Azldi();
     this.ioc.register([
       EnvCfg,
+      UserManager,
       HttpApp,
       RouterManager,
       Mailer,
+      WsApp,
+      WsRouterManager,
     ]);
 
     this.ioc.digest();

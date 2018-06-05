@@ -11,7 +11,11 @@ please DO NOT put any sensitive information here.
 
 /* eslint-disable import/prefer-default-export */
 const runningMode = 'Production';
+const wsPort = 3310;
+const wssPort = 3320;
 
 export {
   runningMode,
+  wsPort,
+  wssPort,
 };
