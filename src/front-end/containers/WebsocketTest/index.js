@@ -1,24 +1,25 @@
 import React from 'react';
 import { compose } from 'recompose';
 import { connect } from 'react-redux';
-import { injectIntl } from 'react-intl';
 import formatMessage from '~/utils/formatMessage';
 import { messages } from '../App/translation';
 import { withStyles } from '@material-ui/core/styles';
 import Icon from '@material-ui/core/Icon';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
-import SimpleMediaCard from './SimpleMediaCard';
+import Button from '@material-ui/core/Button';
 
-const styles = theme => ({
+import {
+  readTestApi,
+  cancelReadTestApi,
+} from './actions';
+import { makeModule } from 'rrw-module';
+import reducer from './reducer';
+import epic from './epic';
+
+const styles = {
   placeholder: {
     height: 40,
-  },
-  mainContainer: {
-    margin: 8,
-    [theme.breakpoints.up('sm')]: {
-      margin: 40,
-    },
   },
   cardContainer: {
     display: 'flex',
@@ -34,20 +35,20 @@ const styles = theme => ({
   listFull: {
     width: 'auto',
   },
-});
+};
 
-class Home extends React.Component {
+class WebsocketTest extends React.Component {
   constructor(props){
     super(props);
   }
 
   render(){
-    let { routeView, intl, greetName, classes } = this.props;
+    let { routeView, classes } = this.props;
 
     return (
-      <div className={classes.mainContainer}>
+      <div>
         <Typography variant="display3">
-          Projects
+          Websocket (ricio)
         </Typography>
         <Divider />
         <div className={classes.placeholder} />
@@ -58,11 +59,16 @@ class Home extends React.Component {
 }
 
 export default compose(
+  makeModule('WebsocketTest', {
+    reducer,
+    epic,
+  }),
   connect(
-    state => ({
-      greetName: state.get('global').greetName,
-    }),
+    state => ({ testApiData: state.get('WebsocketTest').data }),
+    {
+      readTestApi,
+      cancelReadTestApi,
+    }
   ),
-  injectIntl,
   withStyles(styles),
-)(Home);
+)(WebsocketTest);

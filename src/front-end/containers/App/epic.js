@@ -25,6 +25,11 @@ const {
 const types = modelMap.types;
 
 const {
+  postWsSessionsEpic,
+  getWsSessionsEpic,
+} = modelMap.wsEpics;
+
+const {
   getUser,
   postSessions,
 
@@ -82,4 +87,6 @@ export default [
 
   postChallengeRecoveryTokensEpic,
   postResetPasswordRequestsEpic,
+  postWsSessionsEpic,
+  getWsSessionsEpic,
 ];

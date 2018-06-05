@@ -7,6 +7,7 @@ import modelMap from './modelMap';
 
 const {
   sessionReducer,
+  wsSessionReducer,
   userReducer,
   recoveryTokenReducer,
 
@@ -36,6 +37,7 @@ const persistence = (state = { rememberUser: false }, action) => {
 
 export default combineReducers({
   sessions: sessionReducer,
+  wsSessions: wsSessionReducer,
   users: userReducer,
   recoveryTokens: recoveryTokenReducer,
   challengeRecoveryTokens: challengeRecoveryTokenReducer,
