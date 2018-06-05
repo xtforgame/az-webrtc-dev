@@ -1,6 +1,10 @@
 /* eslint-disable no-nested-ternary */
 import { Observable } from 'rxjs/Observable';
 import HeaderManager from '~/utils/HeaderManager';
+import wsProtocol from '~/websocket/wsProtocol1';
+import {
+  getStore,
+} from '~/configureStore';
 import modelMap from '../modelMap';
 import {
   SESSION_VERIFIED,
@@ -10,6 +14,7 @@ import {
   sessionVerified,
   userLoaded,
   failToLoadUser,
+  wsNeedReconnect,
   clearSensitiveData,
   changeTheme,
 } from '../actions';
@@ -23,11 +28,19 @@ const {
 
   getOrganizations,
   getProjects,
+  postWsSessions,
 } = modelMap.waitableActions;
 
 const {
   selectOrganizationPath,
 } = modelMap.actions;
+
+wsProtocol.nativeEvents.addListener('close', (e) => {
+  const store = getStore();
+  store.dispatch(wsNeedReconnect());
+  // console.log('close :', e);
+});
+
 
 const dispatchSessionVerifiedAfterPostedSession = (action$, store) => action$.ofType(types.respondPostSessions)
   .mergeMap(action => [
@@ -39,6 +52,16 @@ const autoSelectDefaultOrganization = (organizations) => {
   array = array.length ? array : (organizations[0] ? [organizations[0]] : []);
   return array.map(org => selectOrganizationPath(org.id));
 };
+
+const postWsSessionAfterPostedSession = (action$, store) => action$.ofType(SESSION_VERIFIED)
+.mergeMap((action) => {
+  HeaderManager.set('Authorization', `${action.session.token_type} ${action.session.token}`);
+  return [
+    postWsSessions({
+      token: action.session.token,
+    }),
+  ];
+});
 
 const fetchDataAfterSessionVerified = (action$, store) => action$.ofType(SESSION_VERIFIED)
   .mergeMap((action) => {
@@ -81,6 +104,7 @@ const autologinAfterRegistration = (action$, store) => action$.ofType(types.post
 
 export default [
   dispatchSessionVerifiedAfterPostedSession,
+  postWsSessionAfterPostedSession,
   fetchDataAfterSessionVerified,
   clearAuthorizationHeaderAfterClearSession,
   autologinAfterRegistration,

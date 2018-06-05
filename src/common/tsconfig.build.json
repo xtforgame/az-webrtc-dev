@@ -7,6 +7,6 @@
   "include": [
     "./**/*.ts",
     "../tsd/node.d.ts",
-    "../tsd/server/**/*"
+    "../tsd/common/**/*"
   ],
 }

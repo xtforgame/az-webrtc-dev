@@ -19,6 +19,7 @@ import {
   sessionVerified,
 } from '~/containers/App/actions';
 import { i18nextInited } from './i18next';
+import { setUpClientRouter } from '~/websocket/ClientRouter';
 import './main.css';
 
 // Create a history of your choosing (we're using a browser history in this case)
@@ -29,6 +30,7 @@ const initialState = {
 };
 // console.log('initialState :', initialState);
 const store = configureStore(initialState, history);
+setUpClientRouter(store);
 const userSessionSelector = makeUserSessionSelector();
 const session = userSessionSelector(store.getState());
 

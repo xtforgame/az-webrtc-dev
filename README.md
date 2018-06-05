@@ -1,6 +1,6 @@
-# AzReactMaterialDev
+# AzRicioDev
 
-A react material ui seed project
+A ricio seed project
 
 Run `npm install`
 

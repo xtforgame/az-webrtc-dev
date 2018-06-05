@@ -14,9 +14,9 @@ export default class RouterManager extends ServiceBase {
 
   static $type = 'service';
 
-  static $inject = ['httpApp', 'mailer'];
+  static $inject = ['httpApp', 'mailer', 'userManager'];
 
-  constructor(httpApp, mailer) {
+  constructor(httpApp, mailer, userManager) {
     super();
     this.mailer = mailer;
 
@@ -32,6 +32,7 @@ export default class RouterManager extends ServiceBase {
     ]
     .map(Router => new Router({
       mailer: this.mailer,
+      gusm: userManager.gusm,
     }).setupRoutes(httpApp.appConfig));
   }
 

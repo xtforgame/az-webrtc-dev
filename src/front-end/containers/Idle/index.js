@@ -6,11 +6,14 @@ import RestoreIcon from '@material-ui/icons/Restore';
 import ScheduleIcon from '@material-ui/icons/Schedule';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
 import { push } from 'react-router-redux';
+import { makeModule } from 'rrw-module';
 import {
   withRouter,
 } from 'react-router-dom';
 
 import MobileTabsFrame from '~/containers/MobileTabsFrame';
+
+import reducer from './reducer';
 
 const styles = theme => ({
 });
@@ -65,6 +68,9 @@ class Idle extends React.PureComponent {
 }
 
 export default compose(
+  makeModule('idle', {
+    reducer,
+  }),
   connect(null, { push }),
   withRouter,
   withStyles(styles),

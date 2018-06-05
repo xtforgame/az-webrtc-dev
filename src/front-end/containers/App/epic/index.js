@@ -9,4 +9,5 @@ export default [
   ...handleDomainLogic,
 
   ...Object.values(modelMap.epics),
+  ...Object.values(modelMap.wsEpics),
 ];

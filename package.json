@@ -1,7 +1,7 @@
 {
-  "name": "az-react-material-dev",
+  "name": "az-ricio-dev",
   "version": "1.0.0",
-  "description": "A react material ui seed project",
+  "description": "A ricio seed project",
   "main": "dist/server/index.js",
   "repository": {
     "type": "git"
@@ -67,10 +67,13 @@
     "koa": "^2.5.0",
     "koa-bodyparser": "^4.2.0",
     "lodash": "^4.17.4",
+    "login-session-mgr": "git+https://github.com/xtforgame/login-session-mgr#v0.2.0",
     "moment": "^2.22.2",
     "numeral": "^2.0.6",
+    "path-to-regexp": "^2.2.0",
     "pngjs": "^3.3.3",
     "prop-types": "^15.6.0",
+    "qs": "^6.5.2",
     "react": "^16.8.2",
     "react-color": "^2.17.3",
     "react-dom": "^16.8.2",
@@ -89,13 +92,15 @@
     "redux-immutable": "^4.0.0",
     "redux-observable": "^0.16.0",
     "redux-wait-for-action": "^0.0.7",
-    "reduxtful": "git+https://github.com/xtforgame/reduxtful.git#v0.3.1",
+    "reduxtful": "git+https://github.com/xtforgame/reduxtful.git#v0.3.4",
     "reselect": "^3.0.1",
+    "ricio": "git+https://github.com/xtforgame/ricio.git#v0.2.6",
     "rrw-module": "git+https://github.com/xtforgame/rrw-module.git#v0.1.5",
     "rxjs": "^5.4.3",
     "sequelize": "4.37.5",
     "uuid": "^3.3.2",
-    "validator": "^10.2.0"
+    "validator": "^10.2.0",
+    "ws": "^4.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.4.0",
@@ -105,7 +110,7 @@
     "@babel/preset-react": "^7.0.0",
     "@babel/preset-typescript": "^7.3.3",
     "@babel/register": "^7.4.0",
-    "az-gulp-env-lite": "git+https://github.com/xtforgame/az-gulp-env-lite.git#v2.0.0-alpha.1",
+    "az-gulp-env-lite": "git+https://github.com/xtforgame/az-gulp-env-lite.git#v2.0.0-alpha.3",
     "babel-eslint": "^8.2.6",
     "babel-loader": "^8.0.5",
     "babel-plugin-module-resolver": "^3.1.1",

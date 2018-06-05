@@ -4,6 +4,7 @@ export const CHANGE_THEME = '@@app/App/CHANGE_THEME';
 export const SESSION_VERIFIED = '@@app/App/SESSION_VERIFIED';
 export const USER_LOADED = '@@app/App/USER_LOADED';
 export const FAIL_TO_LOAD_USER = '@@app/App/FAIL_TO_LOAD_USER';
+export const WS_NEED_RECONNECT = '@@app/App/WS_NEED_RECONNECT';
 export const REQUEST_SAVE_USER_SETTING = '@@app/App/REQUEST_SAVE_USER_SETTING';
 export const SAVE_USER_SETTINGS = '@@app/App/SAVE_USER_SETTINGS';
 export const CLEAR_SENSITIVE_DATA = '@@app/App/CLEAR_SENSITIVE_DATA';
