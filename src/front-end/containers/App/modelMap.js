@@ -7,12 +7,14 @@ import {
 import SelectorsCreator from 'reduxtful/extensions/SelectorsCreator';
 import EpicCreator from 'reduxtful/extensions/EpicCreator';
 import WaitableActionsCreator from 'reduxtful/extensions/WaitableActionsCreator';
-
+import ReduxtfulWsEpicCreator from '~/utils/ReduxtfulWsEpicCreator';
 
 import axios from 'axios';
 import { Observable } from 'rxjs/Observable';
 import { createSelector } from 'reselect';
 import * as symbols from 'redux-wait-for-action';
+import wsProtocol from '~/utils/wsProtocol1';
+import { CancelToken } from 'ricio/front-end';
 
 const responseMiddleware = (response, info, next) => {
   if (response.status === 200 && response.data.error) {
@@ -58,6 +60,24 @@ const modelsDefine = {
       selectors: {
         createSelector,
         baseSelector: state => state.get('global').sessions,
+      },
+    },
+  },
+  wsSessions: {
+    url: '/sessions',
+    names: { model: 'wsSession', member: 'wsSession', collection: 'wsSessions' },
+    config: {
+      // actionNoRedundantBody: true,
+      getId: data => 'me', // data.user_id,
+    },
+    extensionConfigs: {
+      waitableActions: { symbols },
+      wsEpics: {
+        wsProtocol,
+        CancelToken,
+      },
+      selectors: {
+        baseSelector: state => state.get('global').wsSessions,
       },
     },
   },
@@ -159,5 +179,5 @@ const modelsDefine = {
   },
 };
 
-const modelMap = new ModelMap('global', modelsDefine, defaultExtensions.concat([SelectorsCreator, EpicCreator, WaitableActionsCreator]));
+const modelMap = new ModelMap('global', modelsDefine, defaultExtensions.concat([SelectorsCreator, EpicCreator, WaitableActionsCreator, ReduxtfulWsEpicCreator]));
 export default modelMap;

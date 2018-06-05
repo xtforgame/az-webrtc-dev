@@ -1,7 +1,7 @@
 {
-  "name": "az-react-material-dev",
+  "name": "az-ricio-dev",
   "version": "1.0.0",
-  "description": "A react material ui seed project",
+  "description": "A ricio seed project",
   "main": "dist/server/index.js",
   "repository": {
     "type": "git"
@@ -61,9 +61,12 @@
     "koa": "^2.5.0",
     "koa-bodyparser": "^4.2.0",
     "lodash": "^4.17.4",
+    "login-session-mgr": "git+https://github.com/xtforgame/login-session-mgr#v0.1.0",
     "moment": "^2.22.2",
+    "path-to-regexp": "^2.2.0",
     "pngjs": "^3.3.3",
     "prop-types": "^15.6.0",
+    "qs": "^6.5.2",
     "react": "^16.3.0",
     "react-dom": "^16.3.0",
     "react-flip-move": "^3.0.2",
@@ -82,9 +85,11 @@
     "redux-wait-for-action": "^0.0.7",
     "reduxtful": "git+https://github.com/xtforgame/reduxtful.git#v0.2.3",
     "reselect": "^3.0.1",
+    "ricio": "git+https://github.com/xtforgame/ricio.git#v0.1.0",
     "rrw-module": "git+https://github.com/xtforgame/rrw-module.git#v0.1.3",
     "rxjs": "^5.4.3",
-    "validator": "^10.2.0"
+    "validator": "^10.2.0",
+    "ws": "^4.1.0"
   },
   "devDependencies": {
     "az-gulp-env-lite": "git+https://github.com/xtforgame/az-gulp-env-lite.git#v1.0.0-alpha.2",

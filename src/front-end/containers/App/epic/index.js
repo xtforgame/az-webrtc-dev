@@ -21,6 +21,10 @@ const {
   patchMemoEpic,
 } = modelMap.epics;
 
+const {
+  postWsSessionsEpic,
+  getWsSessionsEpic,
+} = modelMap.wsEpics;
 
 export default [
   ...handleSessionEpics,
@@ -32,10 +36,10 @@ export default [
   postUsersEpic,
   patchUserEpic,
 
+  postRecoveryTokensEpic,
+
   getUserSettingsEpic,
   patchUserSettingEpic,
-
-  postRecoveryTokensEpic,
 
   postChallengeRecoveryTokensEpic,
   postResetPasswordRequestsEpic,
@@ -43,4 +47,7 @@ export default [
   getMemosEpic,
   postMemosEpic,
   patchMemoEpic,
+
+  postWsSessionsEpic,
+  getWsSessionsEpic,
 ];

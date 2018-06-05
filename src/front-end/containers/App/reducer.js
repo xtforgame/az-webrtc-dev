@@ -4,11 +4,13 @@ import {
   CHANGE_THEME,
   USER_LOADED,
   FAIL_TO_LOAD_USER,
+  WS_NEED_RECONNECT,
 } from './constants';
 import modelMap from './modelMap';
 
 const {
   sessionReducer,
+  wsSessionReducer,
   userReducer,
   userSettingReducer,
   recoveryTokenReducer,
@@ -51,12 +53,20 @@ const appTempState = (state = {}, action) => {
       return {
         ...state,
         userLoaded: true,
+        wsNeedReconnect: false,
       };
 
     case FAIL_TO_LOAD_USER:
       return {
         ...state,
         loadUserError: action.error,
+        wsNeedReconnect: false,
+      };
+
+    case WS_NEED_RECONNECT:
+      return {
+        ...state,
+        wsNeedReconnect: true,
       };
 
     default:
@@ -67,6 +77,7 @@ const appTempState = (state = {}, action) => {
 
 export default combineReducers({
   sessions: sessionReducer,
+  wsSessions: wsSessionReducer,
   users: userReducer,
   userSettings: userSettingReducer,
   recoveryTokens: recoveryTokenReducer,

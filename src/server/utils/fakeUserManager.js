@@ -23,7 +23,7 @@ class FakeUserManager {
         user_name: user.name,
         auth_type,
         privilege: user.privilege,
-        subject: `user:${user.id}:${0}`,
+        subject: `user:${user.id}:${rest.wsSessionNumber || 0}`,
         token_type: 'Bearer',
         ...rest,
       }),
@@ -40,6 +40,9 @@ class FakeUserManager {
       bio: 'I should write my bio here but I don\'t even understand what I\'m writing, just putting lots of words here.',
       email: 'admin@foo.bar',
     });
+    for (let index = 1; index <= 10; index++) {
+      this.register(`testUser${index}`, `testUser${index}`, `Test User ${index}`, 'user');
+    }
   }
 
   register(username, password, name, privilege, data) {
@@ -63,15 +66,36 @@ class FakeUserManager {
     return user;
   }
 
-  authenticate(auth_type, username, password) {
+  authenticate(auth_type, username, password, extraPayload) {
     const user = this.usernames[username];
     if (auth_type !== 'basic' || !user) {
       return null;
     }
 
     const session = this.jwtSessionHelper.createSession({
+      ...extraPayload,
       user,
       auth_type,
+    });
+
+    return session.info;
+  }
+
+  authenticateFromToken(token, extraPayload) {
+    const tokenInfo = this.verify(token);
+    if (!tokenInfo) {
+      return null;
+    }
+
+    const user = this.userIdMap[tokenInfo.user_id];
+    if (!user) {
+      return null;
+    }
+
+    const session = this.jwtSessionHelper.createSession({
+      ...extraPayload,
+      user,
+      auth_type: tokenInfo.auth_type,
     });
 
     return session.info;

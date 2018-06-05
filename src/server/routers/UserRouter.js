@@ -19,7 +19,7 @@ export default class UserRouter extends RouterBase {
         RestfulError.koaThrowWith(ctx, 403, 'Admin privilege required');
       }
 
-      return ctx.body = ctx.local.exposedUser;
+      return ctx.rcResponse.send(ctx.local.exposedUser);
     });
 
     router.post('/api/users', (ctx) => {
@@ -43,11 +43,11 @@ export default class UserRouter extends RouterBase {
       if (!user) {
         ctx.throw(400, 'Account id has already been taken.', { expose: true });
       }
-      return ctx.body = {
+      return ctx.rcResponse.send({
         id: user.id,
         name,
         privilege,
-      };
+      });
     });
 
     router.patch('/api/users/:userId', fakeUserManager.getIdentity, (ctx, next) => {

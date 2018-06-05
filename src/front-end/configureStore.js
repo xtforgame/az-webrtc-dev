@@ -1,4 +1,4 @@
-/* eslint-disable no-underscore-dangle, no-param-reassign */
+/* eslint-disable no-underscore-dangle, no-param-reassign, no-return-assign */
 import { compose } from 'redux';
 import { routerReducer, routerMiddleware } from 'react-router-redux';
 import { Map as ImmutableMap } from 'immutable';
@@ -29,7 +29,11 @@ if (process.env.NODE_ENV === 'development') {
   composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 }
 
-export default (initialState, history) => configureStore(staticReducers, ImmutableMap(initialState), {
+let store = null;
+
+export const getStore = () => store;
+
+export default (initialState, history) => store = configureStore(staticReducers, ImmutableMap(initialState), {
   reducerOptions: {
     createRootReducer: (rootReducer => (state, action) => {
       if (action.type === CLEAR_SENSITIVE_DATA) {

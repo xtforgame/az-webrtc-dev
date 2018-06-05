@@ -8,6 +8,7 @@ import { RestfulError } from 'az-restful-helpers';
 import http from 'http';
 import path from 'path';
 import appRootPath from 'app-root-path';
+import { createKoaMiddleware } from 'ricio/node';
 import getWebpackService from './webpack-service';
 import runServer from './runServer';
 import ServiceBase from '../ServiceBase';
@@ -20,13 +21,13 @@ export default class HttpApp extends ServiceBase {
 
   static $type = 'service';
 
-  static $inject = ['envCfg'];
+  static $inject = ['envCfg', 'userManager'];
 
   static $funcDeps = {
     start: ['mailer'],
   };
 
-  constructor(envCfg) {
+  constructor(envCfg, userManager) {
     super();
     this.app = new Koa();
     this.app.proxy = !!process.env.KOA_PROXY_ENABLED;
@@ -49,6 +50,8 @@ export default class HttpApp extends ServiceBase {
       textLimit: '10mb',
     }));
     /* let credentials = */this.credentials = envCfg.credentials;
+
+    this.app.use(createKoaMiddleware(userManager));
 
     const KoaRouter = createRouterClass({
       methods,

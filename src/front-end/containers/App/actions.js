@@ -5,6 +5,7 @@ import {
   SESSION_VERIFIED,
   USER_LOADED,
   FAIL_TO_LOAD_USER,
+  WS_NEED_RECONNECT,
   REQUEST_SAVE_USER_SETTING,
   SAVE_USER_SETTINGS,
   CLEAR_SENSITIVE_DATA,
@@ -16,6 +17,7 @@ export const changeTheme = (uiTheme, saveToServer = true) => ({ type: CHANGE_THE
 export const sessionVerified = session => ({ type: SESSION_VERIFIED, session });
 export const userLoaded = () => ({ type: USER_LOADED });
 export const failToLoadUser = error => ({ type: FAIL_TO_LOAD_USER, error });
+export const wsNeedReconnect = () => ({ type: WS_NEED_RECONNECT });
 export const requestSaveUserSetting = (userSettingType, data) => ({
   type: REQUEST_SAVE_USER_SETTING,
   userSettingType,
