@@ -29,6 +29,11 @@ const {
 } = modelMap.wsEpics;
 
 const {
+  postWsSessionsEpic,
+  getWsSessionsEpic,
+} = modelMap.wsEpics;
+
+const {
   getUser,
   postSessions,
 } = modelMap.actions;
