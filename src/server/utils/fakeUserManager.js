@@ -41,7 +41,7 @@ class FakeUserManager {
       email: 'admin@foo.bar',
     });
     for (let index = 1; index <= 10; index++) {
-      this.register(`testUser${index}`, `testUser${index}`, `Test User ${index}`, 'user');
+      this.register(`t${index}@foo.bar`, `t${index}`, `Test User ${index}`, 'user');
     }
   }
 

@@ -27,7 +27,6 @@ export default class InstManager {
       } catch (e) {
         console.log('e :', e);
       }
-
     }
   }
 }

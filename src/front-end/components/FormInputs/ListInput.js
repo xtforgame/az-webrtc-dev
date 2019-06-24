@@ -15,7 +15,7 @@ import IconButton from '@material-ui/core/IconButton';
 
 const styles = theme => ({
   inputListItem: {
-    paddingRight: theme.spacing.unit + 48,
+    paddingRight: theme.spacing(1) + 48,
   },
   insetDivider: {
     marginLeft: 16,
