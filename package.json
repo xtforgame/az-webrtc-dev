@@ -52,7 +52,7 @@
     "fontfaceobserver": "^2.0.13",
     "generic-router": "git+https://github.com/xtforgame/generic-router.git#v1.2.0",
     "google-libphonenumber": "^3.1.5",
-    "googleapis": "27",
+    "googleapis": "59",
     "history": "^4.0.0",
     "http-shutdown": "^1.2.0",
     "i18next": "^15.0.4",
